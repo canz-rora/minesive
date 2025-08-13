@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Minesive, Sayang!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: url('sayang.jpg'') no-repeat center center;
+      ;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .message-box {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px 40px;
+      border-radius: 15px;
+      text-align: center;
+      color: #fff;
+      max-width: 80%;
+      z-index: 2;
+      position: relative;
+    }
+
+    .message-box h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #ffb6c1;
+    }
+
+    .message-box p {
+      font-size: 1.3em;
+      line-height: 1.6;
+    }
+
+    .heart {
+      font-size: 2em;
+      color: #ff4d6d;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Salju Cinta */
+    .snow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .snowflake {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 1.5em;
+      animation-name: fall;
+      animation-timing-function: linear;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="message-box">
+    <h1>Happy Minesive, Cinta! 💖</h1>
+    <p>
+      Hari ini menandai momen indah dalam kisah kita. Terima kasih telah menjadi bagian dari hidupku. <br>
+      Setiap detik bersamamu adalah anugerah yang tak ternilai. <br><br>
+      Aku mencintaimu, sekarang dan selamanya. <span class="heart">❤️</span>
+    </p>
+  </div>
+</div>
+
+<!-- Efek Salju Cinta -->
+<div class="snow" id="snow"></div>
+
+<script>
+  const snowContainer = document.getElementById('snow');
+
+  function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    snowflake.innerText = '❤️';
+
+    // Set posisi horizontal random
+    snowflake.style.left = Math.random() * window.innerWidth + 'px';
+    
+    // Set ukuran dan durasi animasi random
+    snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+    snowflake.style.animationDuration = (Math.random() * 3 + 4) + 's';
+    snowflake.style.opacity = Math.random();
+
+    snowContainer.appendChild(snowflake);
+
+    // Hapus setelah animasi selesai
+    setTimeout(() => {
+      snowflake.remove();
+    }, 7000);
+  }
+
+  // Loop buat hati jatuh terus
+  setInterval(createSnowflake, 200);
+</script>
+
+</body>
+</html>
